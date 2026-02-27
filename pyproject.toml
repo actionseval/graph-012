@@ -1,0 +1,110 @@
+[project]
+
+name = "grab"
+version = "0.6.41"
+description = "Web scraping framework"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {"file" = "LICENSE"}
+keywords = ["web crawling", "web scraping", "web crawler", "web scraper", "lxml", "xpath", "html parsing"]
+authors = [
+    {name = "Gregory Petukhov", email = "lorien@lorien.name"}
+]
+# https://pypi.org/pypi?%3Aaction=list_classifiers
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Typing :: Typed",
+]
+dependencies = [
+    "proxylist>=0.2.1",
+    "unicodec>=0.0.8",
+    "procstat>=0.0.7",
+    "user_agent",
+    "selection>=0.0.21",
+    "lxml",
+    "urllib3[socks]",
+    "certifi",
+]
+
+[project.urls]
+homepage = "http://github.com/lorien/grab"
+
+[project.optional-dependencies]
+pyquery = ["pyquery"]
+cssselect = ["cssselect"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages=["grab", "grab.spider", "grab.spider.queue_backend", "grab.spider.service", "grab.util"]
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_third_party = ["unicodec"]
+# skip_gitignore = true # throws errors in stderr when ".git" dir does not exist
+
+[tool.bandit]
+# B101 assert_used
+# B410 Using HtmlElement to parse untrusted XML data
+# B320 Using lxml.etree.parse to parse untrusted XML data
+# B310 Audit url open for permitted schemes
+# B301 Pickle and modules that wrap it can be unsafe
+# B403 Consider possible security implications associated with pickle module 
+# B324  Use of weak MD4, MD5, or SHA1 hash for security
+# B303 Use of insecure MD2, MD4, MD5, or SHA1 hash function
+skips = ["B101", "B410", "B320", "B310", "B301", "B403", "B324", "B303"]
+
+[[tool.mypy.overrides]]
+module = "pyquery"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["user_agent", "fastrq.priorityqueue"]
+ignore_missing_imports = true
+
+[tool.pylint.main]
+jobs=4
+extension-pkg-whitelist="lxml"
+disable="missing-docstring,broad-except,too-few-public-methods,consider-using-f-string,fixme"
+variable-rgx="[a-z_][a-z0-9_]{1,30}$"
+attr-rgx="[a-z_][a-z0-9_]{1,30}$"
+argument-rgx="[a-z_][a-z0-9_]{1,30}$"
+max-line-length=88
+max-args=9
+load-plugins=[
+    "pylint.extensions.check_elif",
+    "pylint.extensions.comparetozero",
+    "pylint.extensions.comparison_placement",
+    "pylint.extensions.consider_ternary_expression",
+    "pylint.extensions.docstyle",
+    "pylint.extensions.emptystring",
+    "pylint.extensions.for_any_all",
+    "pylint.extensions.overlapping_exceptions",
+    "pylint.extensions.redefined_loop_name",
+    "pylint.extensions.redefined_variable_type",
+    "pylint.extensions.set_membership",
+    "pylint.extensions.typing",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--tb=short"
