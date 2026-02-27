@@ -27,7 +27,7 @@ jobs:
           
       - name: Test with pytest
         run: |
-          pytest ./tests
+          python grab/runtest.py --test-all --network-service=multicurl --grab-transport=pycurl
 
       # CINTENT >> INSERT_CINTENT
       - name: Upload CIntent Artifacts
