@@ -16,8 +16,9 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install -r requirements_dev.txt
-          pip install .
+          pip install -U -r requirements_dev.txt
+          pip install -U -r requirements_backend.txt
+          pip install -U -e .[cssselect,pyquery]
 
       - name: Test with pytest
         run: |
