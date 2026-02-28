@@ -16,9 +16,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install -U -r requirements_dev.txt
-          pip install -U -r requirements_backend.txt
-          pip install -U -e .[cssselect,pyquery]
+          pip install . && pip install -r requirements_dev.txt && pip install pytest
       
       # CINTENT >> INSERT_CINTENT
       - uses: JavidDitty/setup-cintent@3638849e94bdb037f0a405375686a8550e6df904
