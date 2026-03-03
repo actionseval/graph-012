@@ -16,7 +16,7 @@ jobs:
       
       - uses: JavidDitty/setup-dynapyt@main
         with:
-          dynapyt-version: "0.1.0"
+          dynapyt-version: "0.2.1"
           instrument-directory: "tests/"
 
       - name: Install dependencies
