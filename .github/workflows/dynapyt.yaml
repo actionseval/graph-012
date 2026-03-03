@@ -21,13 +21,12 @@ jobs:
       # CINTENT >> INSERT_CINTENT
       - uses: JavidDitty/setup-dynapyt@main
         with:
-          dynapyt-version: "0.0.1"
+          dynapyt-version: "0.1.0"
           entry: "run_all_tests.py"
           instrument-directory: "tests/"
           
       - name: Test with pytest
         run: |
-          pip install pytest
           python run_all_tests.py
 
       # CINTENT >> INSERT_CINTENT
