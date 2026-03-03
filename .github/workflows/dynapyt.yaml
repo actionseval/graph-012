@@ -32,4 +32,4 @@ jobs:
         if: always()
         with:
           name: ${{ env.DYNAPYT_ARTIFACT_NAME }}
-          path: ${{ env.DYNAPYT_OUTPUT }}
+          path: output.log
