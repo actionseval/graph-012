@@ -24,17 +24,17 @@ jobs:
           
       - name: Instrument the Repository
         run: |
-          python -m dynapyt.run_instrumentation --directory tests/ --analysis TraceAll
+          python -m dynapyt.run_instrumentation --directory tests/ --analysis CallGraph
           ls -l tests/
 
       - name: Run the Analysis
         run: |
-          python -m dynapyt.run_analysis --entry run_all_tests.py --analysis TraceAll
+          python -m dynapyt.run_analysis --entry run_all_tests.py --analysis CallGraph
           ls -l output.log
 
       - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: "output.log"
-          path: "/home/runner/work/graph-012/graph-012/output.log"
+          name: "graph-012_dynapyt.json"
+          path: "/home/runner/work/graph-012/graph-012/dynapyt.json"
