@@ -20,11 +20,12 @@ jobs:
 
       - name: Install DynaPyt
         run: |
-          python -m pip install pytest libcst dynapyt==0.1.0
+          python -m pip install pytest libcst dynapyt==0.2.2
           
       - name: Instrument the Repository
         run: |
-          python -m dynapyt.run_instrumentation --directory . --analysis CallGraph
+          python -m dynapyt.run_instrumentation --directory grab/ --analysis CallGraph
+          python -m dynapyt.run_instrumentation --directory tests/ --analysis CallGraph
 
       - name: Run the Analysis
         run: |
