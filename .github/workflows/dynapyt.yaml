@@ -23,11 +23,15 @@ jobs:
           python -m pip install pytest pytest-xdist libcst dynapyt==0.1.0
           python -m dynapyt.run_instrumentation --directory tests/ --analysis TraceAll
           ls -l tests/
-          # python -m dynapyt.run_analysis --entry run_all_tests.py --analysis TraceAll
 
-      # - name: Upload Dynapyt Artifacts
-      #   uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with:
-      #     name: ${{ env.DYNAPYT_ARTIFACT_NAME }}
-      #     path: output.log
+      - name: Test with pytest
+        run: |
+          python -m dynapyt.run_analysis --entry run_all_tests.py --analysis TraceAll
+          ls -l
+
+      - name: Upload Dynapyt Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ env.DYNAPYT_ARTIFACT_NAME }}
+          path: output.log
