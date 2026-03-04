@@ -82,6 +82,8 @@ class TestHtmlForms(BaseTestCase):
 
     def test_choose_form1(self) -> None:
         """Test ``choose_form`` method."""
+        print('CINTENT: test_choose_form1')
+        
         # raise errors
         self.assertRaises(DataNotFound, self.doc.choose_form, 10)
         self.assertRaises(DataNotFound, self.doc.choose_form, id="bad_id")
