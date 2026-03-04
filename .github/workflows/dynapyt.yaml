@@ -30,7 +30,7 @@ jobs:
       - name: Run the Analysis
         run: |
           python -m dynapyt.run_analysis --entry run_all_tests.py --analysis CallGraph
-          ls -l output.log
+          ls -l dynapyt.json
 
       - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
