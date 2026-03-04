@@ -1,3 +1,3 @@
 import pytest
 
-pytest.main(['-n', '8', '--import-mode=importlib', './tests'])
+pytest.main(['--import-mode=importlib', './tests'])
