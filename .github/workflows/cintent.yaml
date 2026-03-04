@@ -1,4 +1,4 @@
-name: Custom
+name: CIntent
 
 on: workflow_dispatch
 
@@ -9,23 +9,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v6
         with:
-          python-version: "3.8"
+          python-version: "3.10"
       
       - name: Install dependencies
         run: |
           pip install . && pip install -r requirements_dev.txt && pip install pytest
       
-      # CINTENT >> INSERT_CINTENT
       - uses: JavidDitty/setup-cintent@3638849e94bdb037f0a405375686a8550e6df904
         with:
           nonblocking: true
           
       - name: Test with pytest
         run: |
-          python -m pytest --import-mode=importlib "tests/"
+          python3 run_all_tests.py
 
       # CINTENT >> INSERT_CINTENT
       - name: Upload CIntent Artifacts
