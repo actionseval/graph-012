@@ -24,12 +24,12 @@ jobs:
           
       - name: Instrument the Repository
         run: |
-          python -m dynapyt.run_instrumentation --directory grab/ --analysis CallGraph
-          python -m dynapyt.run_instrumentation --directory tests/ --analysis CallGraph
+          python -m dynapyt.run_instrumentation --directory grab/ --analysis dynapyt.analyses.CallGraph.CallGraph
+          python -m dynapyt.run_instrumentation --directory tests/ --analysis dynapyt.analyses.CallGraph.CallGraph
 
       - name: Run the Analysis
         run: |
-          python -m dynapyt.run_analysis --entry run_all_tests.py --analysis CallGraph
+          python -m dynapyt.run_analysis --entry run_all_tests.py --analysis dynapyt.analyses.CallGraph.CallGraph
 
       - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
