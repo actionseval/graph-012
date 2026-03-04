@@ -25,7 +25,8 @@ jobs:
           
       - name: Instrument the Repository
         run: |
-          python -m dynapyt.run_instrumentation --directory . --analysis CallGraph
+          python -m dynapyt.run_instrumentation --directory grab/ --analysis CallGraph
+          python -m dynapyt.run_instrumentation --directory tests/ --analysis CallGraph
 
       - name: Install dependencies
         run: |
