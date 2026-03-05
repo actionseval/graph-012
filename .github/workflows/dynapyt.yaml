@@ -36,9 +36,9 @@ jobs:
         run: |
           python -m dynapyt.run_analysis --entry run_all_tests.py --analysis CallGraph
 
-      - name: Upload Dynapyt Artifacts
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: "graph-012_dynapyt.json"
-          path: "/home/runner/work/graph-012/graph-012/dynapyt.json"
+      # - name: Upload Dynapyt Artifacts
+      #   uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with:
+      #     name: "graph-012_dynapyt.json"
+      #     path: "/home/runner/work/graph-012/graph-012/dynapyt.json"
