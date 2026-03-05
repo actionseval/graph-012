@@ -1,3 +1,3 @@
 import pytest
 
-pytest.main(['-v', '--import-mode=importlib', './tests'])
+pytest.main(['-v', '--import-mode=importlib', './tests-min'])
