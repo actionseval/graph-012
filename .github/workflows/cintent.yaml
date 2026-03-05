@@ -20,7 +20,7 @@ jobs:
       
       - uses: JavidDitty/setup-cintent@3638849e94bdb037f0a405375686a8550e6df904
         with:
-          nonblocking: true
+          nonblocking: false
           
       - name: Test with pytest
         run: |
