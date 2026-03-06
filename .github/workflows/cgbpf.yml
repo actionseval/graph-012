@@ -16,4 +16,4 @@ jobs:
       
       - name: Install dependencies
         run: |
-          sudo bpftrace -e 'usdt:*:*:function__entry,usdt:*:*:function__return { printf("%s\n", probe); exit(); }'
+          sudo bpftrace -e 'ENTER { printf("%s\n", probe); exit(); }'
