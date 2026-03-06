@@ -15,5 +15,5 @@ jobs:
       #     python-version: "3.10"
     
       - run: |
-          python -c "import time; time.sleep(10);" &
+          python3 example.py &
           sudo bpftrace -l "usdt:*:*"
