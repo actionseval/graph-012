@@ -16,15 +16,13 @@ jobs:
       
       - name: Install dependencies
         run: |
-          # pip install . && pip install -r requirements_dev.txt && pip install pytest
-          which python
-          which python3
+          pip install . && pip install -r requirements_dev.txt && pip install pytest
       
-      # - uses: JavidDitty/setup-cgbpf@main
+      - uses: JavidDitty/setup-cgbpf@main
           
       - name: Test with pytest
         run: |
-          # python3 run_all_tests.py
+          python3 run_all_tests.py
 
       - name: Upload CG-BPF Artifacts
         uses: actions/upload-artifact@v4
