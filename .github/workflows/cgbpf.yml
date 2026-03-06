@@ -15,5 +15,6 @@ jobs:
           python-version: "3.10"
     
       - run: |
-          python3 example.py &
-          sudo bpftrace -l "usdt:*:*"
+          # python3 example.py &
+          # sudo bpftrace -l "usdt:*:*"
+          python3 -m sysconfig | grep with-dtrace
