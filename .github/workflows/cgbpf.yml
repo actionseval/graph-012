@@ -1,0 +1,19 @@
+name: cg-bpf
+
+on: workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+      
+      - name: Install dependencies
+        run: |
+          sudo bpftrace -e 'usdt:*:python:function__entry,usdt:*:python:function__return { printf("%s\n", probe); exit(); }'
