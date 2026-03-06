@@ -17,4 +17,4 @@ jobs:
       - run: |
           # python3 example.py &
           # sudo bpftrace -l "usdt:*:*"
-          python3 -m sysconfig | grep with-dtrace
+          sudo python3 -m sysconfig
