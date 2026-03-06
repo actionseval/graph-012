@@ -16,4 +16,4 @@ jobs:
     
       - run: |
           python -c "import time; time.sleep(10);" &
-          sudo bpftrace -l "usdt:*:function__entry"
+          sudo bpftrace -l "usdt:*:*"
